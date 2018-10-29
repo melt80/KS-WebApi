@@ -14,12 +14,17 @@ namespace KS.API.Controllers.Authorization
     [ApiController]
     public class RegisterController : Controller
     {
+        private readonly RegisterUserManager _registerUserManager;
+
+        public RegisterController(RegisterUserManager registerUserManager)
+        {
+            _registerUserManager = registerUserManager;
+        }
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] NewUserCreateRequest userForRegister)
         {
             userForRegister.Username = userForRegister.Username.ToLower();
-            var registerManager = new RegisterUserManager();
-            await registerManager.RegisterUser(userForRegister);
+            await _registerUserManager.RegisterUser(userForRegister);
             return StatusCode(201);
         }
     }

@@ -8,6 +8,6 @@ namespace KS.Business.DataContract.Authorization
 {
     public interface IRegisterUserManager
     {
-        Task<NewUserCreateDTO> RegisterUser(NewUserCreateRequest userRequest);
+        Task<bool> RegisterUser(NewUserCreateRequest userRequest);
     }
 }

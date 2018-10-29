@@ -1,6 +1,8 @@
 ﻿using KS.API.DataContract.Authorization;
 using KS.Business.DataContract.Authorization;
 using KS.Business.Engines.Authorization;
+using KS.Database.Authorization.Invokers;
+using KS.Database.DataContract.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,19 +12,20 @@ namespace KS.Business.Managers.Authorization
 {
     public class RegisterUserManager : IRegisterUserManager
     {
-        public Task<NewUserCreateDTO> RegisterUser(NewUserCreateRequest userRequest)
+        private readonly IUserRegisterInvoker _userRegisterInvoker;
+
+        public RegisterUserManager(IUserRegisterInvoker userRegisterInvoker)
         {
-            NewUserCreateDTO dto = PrepareUserDTOForRegister(userRequest);
+            _userRegisterInvoker = userRegisterInvoker;
 
-            throw new Exception();
-            //create new instance of the engine x
-            //call createpasswordhash method x
-            //pass variable into password hash x
-            //prepare the DTO object for the next layer x
-            //instantiate the class for the database
-            //call the Invoker method in the DAL
+        }
 
-            //store username in variable
+        public async Task<bool> RegisterUser(NewUserCreateRequest userRequest)
+        {
+            var dto = PrepareUserDTOForRegister(userRequest);
+
+            return await _userRegisterInvoker.InvokeRegisterUserCommand(dto);
+
         }
 
         private NewUserCreateDTO PrepareUserDTOForRegister(NewUserCreateRequest userRequest)
