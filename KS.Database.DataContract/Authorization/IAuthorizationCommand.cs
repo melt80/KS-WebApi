@@ -8,6 +8,6 @@ namespace KS.Database.DataContract.Authorization
 {
     public interface IAuthorizationCommand
     {
-        Task<bool> Execute(NewUserCreateDTO userDTO);
+        Task<bool> Execute(UserRegisterRAO userRAO);
     }
 }

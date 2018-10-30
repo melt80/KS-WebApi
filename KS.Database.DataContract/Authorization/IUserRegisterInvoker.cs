@@ -8,6 +8,6 @@ namespace KS.Database.DataContract.Authorization
 {
     public interface IUserRegisterInvoker
     {
-        Task<bool> InvokeRegisterUserCommand(NewUserCreateDTO userDTO);
+        Task<bool> InvokeRegisterUserCommand(UserRegisterRAO userRAO);
     }
 }
