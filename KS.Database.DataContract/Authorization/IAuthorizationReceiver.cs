@@ -10,6 +10,7 @@ namespace KS.Database.DataContract.Authorization
     {
         Task<bool> RegisterUser(UserRegisterRAO userRAO);
         //LOGIN
+        
         //User Auth Check
     }
 }

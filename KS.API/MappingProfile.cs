@@ -14,9 +14,17 @@ namespace KS.API
     {
         public MappingProfile()
         {
+            //maps for user registration
             CreateMap<NewUserCreateRequest, NewUserCreateDTO>();
             CreateMap<NewUserCreateDTO, UserRegisterRAO>();
             CreateMap<UserRegisterRAO, UserEntity>();
+
+            //maps for login
+            CreateMap<ExistingUserQueryRequest, QueryForExistingUserDTO>();
+            CreateMap<QueryForExistingUserDTO, QueryForExistingUserRAO>();
+            CreateMap<QueryForExistingUserRAO, UserEntity>();
+            CreateMap<UserEntity, ReceivedUserRAO>();
+            CreateMap<QueryForExistingUserRAO, ReceivedUserDTO>();
         }
     }
 }

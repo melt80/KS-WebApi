@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KS.API.DataContract\KS.API.DataContract.csproj" />
     <ProjectReference Include="..\KS.Business.DataContract\KS.Business.DataContract.csproj" />
     <ProjectReference Include="..\KS.Database\KS.Database.csproj" />
   </ItemGroup>
