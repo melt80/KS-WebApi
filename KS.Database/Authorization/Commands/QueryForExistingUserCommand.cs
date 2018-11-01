@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KS.Database.Authorization.Commands
 {
-    class QueryForExistingUserCommand : IQueryForExistingUserCommand
+    public class QueryForExistingUserCommand : IQueryForExistingUserCommand
     {
         private readonly IQueryForExistingUserReceiver _receiver;
 

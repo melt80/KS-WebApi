@@ -8,5 +8,7 @@ namespace KS.Business.DataContract.Authorization
     public interface ILoginManager
     {
         Task<ReceivedUserDTO> LoginUser(QueryForExistingUserDTO userRequest);
+
+        string GenerateTokenForUser(ReceivedUserDTO receivedExistingUser);
     }
 }

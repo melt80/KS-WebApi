@@ -26,10 +26,15 @@ namespace KS.API.Controllers.Authorization
         [HttpPost("UserLogin")]
         public async Task<IActionResult> Login([FromBody] ExistingUserQueryRequest userForLogin)
         {
-            //userForLogin.Username = userForLogin.Username.ToLower();
-            //var dto = _mapper.Map<QueryForExistingUserDTO>(userForLogin);
-            //await _loginManager.LoginUser(dto);
-            return Ok();
+            userForLogin.Username = userForLogin.Username.ToLower();
+
+            var dto = _mapper.Map<QueryForExistingUserDTO>(userForLogin);
+
+            var receivedExistingUser = await _loginManager.LoginUser(dto);
+
+            string tokenString = _loginManager.GenerateTokenForUser(receivedExistingUser);
+
+            return Ok(new { tokenString, receivedExistingUser });
         }
     }
 }

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace KS.Database.Authorization.Receivers
 {
-    class ExistingUserReceiver : IQueryForExistingUserReceiver
+    public class QueryForExistingUserReceiver : IQueryForExistingUserReceiver
     {
         private readonly KSContext _context;
         private readonly IMapper _mapper;
 
-        public ExistingUserReceiver(KSContext context, IMapper mapper)
+        public QueryForExistingUserReceiver(KSContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
