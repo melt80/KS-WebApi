@@ -25,10 +25,14 @@ namespace KS.API.Controllers.Authorization
             _mapper = mapper;
         }
 
+        public RegisterController(IRegisterUserManager mockRegisterUserManager)
+        {
+            _registerUserManager = mockRegisterUserManager;
+        }
+
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] NewUserCreateRequest userForRegister)
         {
-            userForRegister.Username = userForRegister.Username.ToLower();
             var dto = _mapper.Map<NewUserCreateDTO>(userForRegister);
             await _registerUserManager.RegisterUser(dto);
             return StatusCode(201);
